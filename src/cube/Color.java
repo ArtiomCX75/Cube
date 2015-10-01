@@ -1,10 +1,10 @@
 package cube;
 
 public class Color {
-public static final String RED="RED";
-public static final String ORANGE="ORANGE";
-public static final String YELLOW="YELLOW";
-public static final String WHITE="WHITE";
-public static final String GREEN="GREEN";
-public static final String BLUE="BLUE";
+public static final int GREEN=1;
+public static final int RED=2;
+public static final int WHITE=3;
+public static final int ORANGE=4;
+public static final int YELLOW=5;
+public static final int BLUE=6;
 }
