@@ -1,0 +1,6 @@
+i=0 j=0 k=0 l=0 m=11 n=8 o=9 p=1 r=11 s=4 t=1 u=6 res1=19
+
+i=0 j=0 k=0 l=1 m=8 n=7 o=5 p=12 r=10 s=1 t=8 u=1 res1=19
+i=0 j=0 k=0 l=1 m=8 n=12 o=2 p=9 r=8 s=1 t=8 u=1 res1=20
+
+i=0 j=0 k=0 l=0 m=8 n=1 o=12 p=4 r=1 s=8 t=11 u=1 res1=11

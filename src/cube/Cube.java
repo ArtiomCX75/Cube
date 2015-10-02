@@ -20,14 +20,14 @@ public void newcube(){
 }
 public void setSide(Side side, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9) {
 side.i1=i;
-side.i2=i;
-side.i3=i;
-side.i4=i;
-side.i5=i;
-side.i6=i;
-side.i7=i;
-side.i8=i;
-side.i9=i;
+side.i2=i2;
+side.i3=i3;
+side.i4=i4;
+side.i5=i5;
+side.i6=i6;
+side.i7=i7;
+side.i8=i8;
+side.i9=i9;
 
 }
 }

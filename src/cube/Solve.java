@@ -18,13 +18,17 @@ public static void toSolve(Cube cube){
 	int maxu=0;
 	int res1=0;
 	int res2=0;
-for (int i=0;i<13;i++) {
-for (int j=0;j<13;j++) {
-for (int k=0;k<13;k++) {
-for (int l=0;l<13;l++) {
+for (int i=0;i<1;i++) {
+for (int j=0;j<1;j++) {
+for (int k=0;k<1;k++) {
+for (int l=0;l<4;l++) {
+	System.out.println("l="+l);
 for (int m=0;m<13;m++) {
+	System.out.println("m="+m);
 for (int n=0;n<13;n++) {
+	System.out.println("n="+n);
 for (int o=0;o<13;o++) {
+	//System.out.println("o");
 for (int p=0;p<13;p++) {
 for (int r=0;r<13;r++) {
 for (int s=0;s<13;s++) {
@@ -32,6 +36,7 @@ for (int t=0;t<13;t++) {
 for (int u=0;u<13;u++) {
 	
 	Cube buffer = new Cube();
+	//buffer.newcube();
 	buffer=Move.clone(cube);
 	buffer=makeMove(buffer, i);
 	buffer=makeMove(buffer, j);
@@ -45,7 +50,8 @@ for (int u=0;u<13;u++) {
 	buffer=makeMove(buffer, s);
 	buffer=makeMove(buffer, t);
 	buffer=makeMove(buffer, u);
-	res1=checkCube(buffer);
+	res1=checkCubeCorners(buffer);
+	//System.out.println(Integer.toString(res1));
 		if (res1>res2){
 		res2=res1;
 		maxi=i;
@@ -61,11 +67,12 @@ for (int u=0;u<13;u++) {
 		maxt=t;
 		maxu=u;
 		System.out.println("i="+maxi+" j="+maxj+" k="+maxk+" l="+maxl+" m="+maxm+" n="+maxn+" o="+maxo+" p="+maxp+" r="+maxr+" s="+maxs+" t="+maxt+" u="+maxu+" res1="+res1);	
-
+		//Elements.prSide(buffer.sideGreen);
 	}
 	}}}}}}}}}}}
 	
 }
+System.out.println(" ");
 System.out.println("i="+maxi+" j="+maxj+" k="+maxk+" l="+maxl+" m="+maxm+" n="+maxn+" o="+maxo+" p="+maxp+" r="+maxr+" s="+maxs+" t="+maxt+" u="+maxu+" res2="+res2);	
 	
 
@@ -115,17 +122,16 @@ public static Cube makeMove(Cube cube1, int i){
 	cube1=Move.d(cube1);
 	cube1=Move.d(cube1);}
 	
-	
 	return cube1;
 }
 public static int checkCube(Cube cube){
 	int res=0;
 	res=res+checkSide(cube.sideGreen, Color.GREEN);
-	res=res+checkSide(cube.sideRed, Color.RED);
+	/*res=res+checkSide(cube.sideRed, Color.RED);
 	res=res+checkSide(cube.sideWhite, Color.WHITE);
 	res=res+checkSide(cube.sideOrange, Color.ORANGE);
 	res=res+checkSide(cube.sideYellow, Color.YELLOW);
-	res=res+checkSide(cube.sideBlue, Color.BLUE);
+	res=res+checkSide(cube.sideBlue, Color.BLUE);*/
 	return res;
 }
 public static int checkSide(Side side, int c){
@@ -154,4 +160,32 @@ public static int checkSide(Side side, int c){
 	//System.out.println(" "+i);
 	return i;
 }
+
+public static int checkCubeCorners(Cube cube){
+	int res=0;
+	res=res+checkSideCorners(cube.sideGreen, Color.GREEN);
+	res=res+checkSide(cube.sideRed, Color.RED);
+	res=res+checkSide(cube.sideWhite, Color.WHITE);
+	//res=res+checkSide(cube.sideOrange, Color.ORANGE);
+	//res=res+checkSide(cube.sideYellow, Color.YELLOW);
+	//res=res+checkSide(cube.sideBlue, Color.BLUE);
+	return res;
+}
+public static int checkSideCorners(Side side, int c){
+	//Cube cubeDone = new Cube();
+	//cubeDone.newcube();
+	int i=0;
+	if (side.i1==c)
+		{i=i+1;}
+	if (side.i3==c)
+		{i=i+1;}
+		
+	if (side.i7==c)
+		{i=i+1;}
+	if (side.i9==c)
+		{i=i+1;}
+	//System.out.println("i= "+i);
+	return i;
+}
+
 }
