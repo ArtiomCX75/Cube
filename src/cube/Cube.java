@@ -11,12 +11,12 @@ public Side sideBlue=new Side();
 
 public void newcube(){
 	
-	setSide(sideGreen, Color.GREEN,0,0,0,0,0,0,0,0);
-	setSide(sideRed, Color.RED,0,0,0,0,0,0,0,0);
-	setSide(sideWhite, Color.WHITE,0,0,0,0,0,0,0,0);
-	setSide(sideOrange, Color.ORANGE,0,0,0,0,0,0,0,0);
-	setSide(sideYellow, Color.YELLOW,0,0,0,0,0,0,0,0);
-	setSide(sideBlue, Color.BLUE,0,0,0,0,0,0,0,0);
+	setSide(sideGreen, Color.GREEN,1,1,1,1,1,1,1,1);
+	setSide(sideRed, Color.RED,2,2,2,2,2,2,2,2);
+	setSide(sideWhite, Color.WHITE,3,3,3,3,3,3,3,3);
+	setSide(sideOrange, Color.ORANGE,4,4,4,4,4,4,4,4);
+	setSide(sideYellow, Color.YELLOW,5,5,5,5,5,5,5,5);
+	setSide(sideBlue, Color.BLUE,6,6,6,6,6,6,6,6);
 }
 public void setSide(Side side, int i, int i2, int i3, int i4, int i5, int i6, int i7, int i8, int i9) {
 side.i1=i;

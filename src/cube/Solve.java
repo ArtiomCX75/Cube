@@ -1,5 +1,6 @@
 package cube;
 
+import java.util.Arrays;
 import java.util.Random;
 
 public class Solve {
@@ -18,6 +19,7 @@ public static void toSolve(Cube cube){
 	int maxu=0;
 	int res1=0;
 	int res2=0;
+	Cube buffer = new Cube();
 for (int i=0;i<1;i++) {
 for (int j=0;j<1;j++) {
 for (int k=0;k<1;k++) {
@@ -35,7 +37,7 @@ for (int s=0;s<13;s++) {
 for (int t=0;t<13;t++) {
 for (int u=0;u<13;u++) {
 	
-	Cube buffer = new Cube();
+	
 	//buffer.newcube();
 	buffer=Move.clone(cube);
 	buffer=makeMove(buffer, i);
@@ -50,7 +52,7 @@ for (int u=0;u<13;u++) {
 	buffer=makeMove(buffer, s);
 	buffer=makeMove(buffer, t);
 	buffer=makeMove(buffer, u);
-	res1=checkCubeCorners(buffer);
+	res1=checkCube(buffer);
 	//System.out.println(Integer.toString(res1));
 		if (res1>res2){
 		res2=res1;
@@ -68,17 +70,165 @@ for (int u=0;u<13;u++) {
 		maxu=u;
 		System.out.println("i="+maxi+" j="+maxj+" k="+maxk+" l="+maxl+" m="+maxm+" n="+maxn+" o="+maxo+" p="+maxp+" r="+maxr+" s="+maxs+" t="+maxt+" u="+maxu+" res1="+res1);	
 		//Elements.prSide(buffer.sideGreen);
-	}
-	}}}}}}}}}}}
+		if (res2==4)
+		{break;}
+		}
+	}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}if (res2==4)
+	{break;}}
 	
 }
-System.out.println(" ");
+
 System.out.println("i="+maxi+" j="+maxj+" k="+maxk+" l="+maxl+" m="+maxm+" n="+maxn+" o="+maxo+" p="+maxp+" r="+maxr+" s="+maxs+" t="+maxt+" u="+maxu+" res2="+res2);	
-	
+int[] re=new int[100];
+re[0]=0;
+
+re=addres(re,maxi);
+re=addres(re,maxj);
+re=addres(re,maxk);
+re=addres(re,maxl);
+re=addres(re,maxm);
+re=addres(re,maxn);
+re=addres(re,maxo);
+re=addres(re,maxp);
+re=addres(re,maxr);
+re=addres(re,maxs);
+re=addres(re,maxt);
+re=addres(re,maxu);
+
+
+Cube buffer1 = new Cube();
+buffer1=Move.clone(buffer);
+int[] tempre=new int[100];
+tempre[0]=0;
+int[] tempre1=new int[100];
+tempre1[0]=0;
+/*
+while (true)
+{	
+	if(buffer1.sideRed.i2==2&&buffer1.sideWhite.i2==3&&buffer1.sideOrange.i2==4&&buffer1.sideYellow.i2==5)
+		{
+		break;}
+	while(buffer1.sideRed.i2!=2)
+	{
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+	}	
+	while(buffer1.sideWhite.i2!=3)
+	{
+		buffer1=makeMove(buffer1, 9);
+		tempre=addres(tempre,9);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 3);
+		tempre=addres(tempre,3);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 9);
+		tempre=addres(tempre,9);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 3);
+		tempre=addres(tempre,3);	
+	}	
+	if(buffer1.sideOrange.i2!=4)
+	{
+		buffer1=makeMove(buffer1, 4);
+		System.out.println("temp0="+tempre[0]);
+		tempre=addres(tempre,4);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 10);
+		tempre=addres(tempre,10);
+		buffer1=makeMove(buffer1, 7);
+		tempre=addres(tempre,7);
+		buffer1=makeMove(buffer1, 4);
+		tempre=addres(tempre,4);
+	}	
+}
+tempre1=tempre;
+////
+buffer1=Move.clone(buffer);
+tempre[0]=0;
+while (true)
+{	
+	if(buffer1.sideRed.i2==2&&buffer1.sideWhite.i2==3&&buffer1.sideOrange.i2==4&&buffer1.sideYellow.i2==5)
+		{
+		break;}
+	while(buffer1.sideWhite.i2!=3)
+	{
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+	}	
+	while(buffer1.sideOrange.i2!=4)
+	{
+		buffer1=makeMove(buffer1, 10);
+		tempre=addres(tempre,10);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 4);
+		tempre=addres(tempre,4);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 10);
+		tempre=addres(tempre,10);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 4);
+		tempre=addres(tempre,4);	
+	}	
+	if(buffer1.sideYellow.i2!=5)
+	{
+		buffer1=makeMove(buffer1, 5);
+		tempre=addres(tempre,5);
+		buffer1=makeMove(buffer1, 1);
+		tempre=addres(tempre,1);
+		buffer1=makeMove(buffer1, 11);
+		tempre=addres(tempre,11);
+		buffer1=makeMove(buffer1, 7);
+		tempre=addres(tempre,7);
+		buffer1=makeMove(buffer1, 5);
+		tempre=addres(tempre,5);
+	}	
+}
+////
+if (tempre[0]<tempre1[0])
+{tempre1=tempre;}
+
+for (int i=1;i<tempre1[0]+1;i++)
+{
+	re=addres(re,tempre1[i]);
+}
+*/
+for (int i=1;i<re[0]+1;i++)
+{
+	System.out.println(i+"  "+re[i]);
+}
 
 
 
 }
+public static int[] addres(int[] ar, int i){
+	if (i!=0)
+	{
+	ar[0]=ar[0]+1;
+	ar[ar[0]]=i;
+	}
+	return ar;
+}
+
 public static int rand(int i) {
 	Random r = new Random();
 	return r.nextInt(i)+1;
@@ -126,12 +276,31 @@ public static Cube makeMove(Cube cube1, int i){
 }
 public static int checkCube(Cube cube){
 	int res=0;
-	res=res+checkSide(cube.sideGreen, Color.GREEN);
-	/*res=res+checkSide(cube.sideRed, Color.RED);
-	res=res+checkSide(cube.sideWhite, Color.WHITE);
-	res=res+checkSide(cube.sideOrange, Color.ORANGE);
-	res=res+checkSide(cube.sideYellow, Color.YELLOW);
-	res=res+checkSide(cube.sideBlue, Color.BLUE);*/
+	int res1=0;
+	res=checkSide(cube.sideGreen, Color.GREEN);
+	if (res1>res)
+	{res=res1;}
+	if (cube.sideRed.i2!=2)
+	{res=0;}
+	if (cube.sideWhite.i2!=3)
+	{res=0;}
+	if (cube.sideOrange.i2!=4)
+	{res=0;}
+	/*res=checkSide(cube.sideRed, Color.RED);
+	if (res1>res)
+	{res=res1;}
+	res=checkSide(cube.sideWhite, Color.WHITE);
+	if (res1>res)
+	{res=res1;}
+	res=checkSide(cube.sideOrange, Color.ORANGE);
+	if (res1>res)
+	{res=res1;}
+	res=checkSide(cube.sideYellow, Color.YELLOW);
+	if (res1>res)
+	{res=res1;}
+	res=checkSide(cube.sideBlue, Color.BLUE);
+	if (res1>res)
+	{res=res1;}*/
 	return res;
 }
 public static int checkSide(Side side, int c){
@@ -139,24 +308,24 @@ public static int checkSide(Side side, int c){
 	//cubeDone.newcube();
 	int i=0;
 	
-	if (side.i1==c)
-		i=i+1;
+//	if (side.i1==c)
+//		i=i+1;
 	if (side.i2==c)
 		i=i+1;
-	if (side.i3==c)
-		i=i+1;
+//	if (side.i3==c)
+//		i=i+1;
 	if (side.i4==c)
 		i=i+1;
-	if (side.i5==c)
-		i=i+1;
+//	if (side.i5==c)
+//		i=i+1;
 	if (side.i6==c)
 		i=i+1;
-	if (side.i7==c)
-		i=i+1;
+//	if (side.i7==c)
+//		i=i+1;
 	if (side.i8==c)
 		i=i+1;
-	if (side.i9==c)
-		i=i+1;
+//	if (side.i9==c)
+//		i=i+1;
 	//System.out.println(" "+i);
 	return i;
 }
