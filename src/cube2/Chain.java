@@ -8,13 +8,14 @@ public class Chain {
 	public String moveNum;
 	public static int maxGen;
 	public Chain ch[] = new Chain[13];
+	public String kill = "0";
 	public static String mo[] = { "U", "F", "R", "B", "L", "D", "u", "f", "r", "b", "l", "d" };
-	public static BigInteger total = new BigInteger("0");
-	public static BigInteger odin = new BigInteger("1");
-	public static int tot=0;
+	// public static BigInteger total = new BigInteger("0");
+	// public static BigInteger odin = new BigInteger("1");
+	public static int tot = 0;
 	public static int count = 0;
 	public String resultChain;
-	
+
 	public Chain(int i) {
 		// System.out.println("zero generation");
 		genNumber = 0;
@@ -30,17 +31,20 @@ public class Chain {
 		// System.out.println(genNumber + " generation "+moveNum+" move");
 		if (genNumber == maxGen) {
 			resultChain = getChainsOfMoves();
-		//	System.out.println(resultChain);
+			// System.out.println(resultChain);
 			check();
-			if (tot>1000000){
-			System.out.println("mln");
-			tot=0;
-			}	
-		//	System.out.println(resultChain);
-		//	check();
-		//	System.out.println(resultChain);
-			total = total.add(odin);
+			if (tot >= 100000) {
+				System.out.println(tot);
+				tot = 0;
+			}
+			// System.out.println(resultChain);
+			// check();
+			// System.out.println(resultChain);
+			// total = total.add(odin);
 			tot++;
+			if (resultChain.length() < 4)
+				kill = "1";
+			// else add to collection
 			return;
 		} else {
 			create();
@@ -52,6 +56,10 @@ public class Chain {
 
 			String m = mo[i];
 			ch[i] = new Chain(this, m);
+			if (ch[i].kill.equals("1")) {
+				//System.out.println("                         kill");
+				ch[i] = null;
+			}
 		}
 
 	}
@@ -81,15 +89,16 @@ public class Chain {
 
 	public void check() {
 
-	//	System.out.println(resultChain);
+		// System.out.println(resultChain);
 		b4: for (int ñ = 0; ñ < 5; ñ++) {
 			if (resultChain.length() > 3) {
 				for (int i = 0; i < resultChain.length() - 3; i++) {
-					if ((resultChain.charAt(i) == resultChain.charAt(i + 1)) & (resultChain.charAt(i) == resultChain.charAt(i + 2))
+					if ((resultChain.charAt(i) == resultChain.charAt(i + 1))
+							& (resultChain.charAt(i) == resultChain.charAt(i + 2))
 							& (resultChain.charAt(i) == resultChain.charAt(i + 3))) {
-					//	System.out.println("bf " + resultChain);
+						// System.out.println("bf " + resultChain);
 						resultChain = resultChain.substring(0, i) + resultChain.substring(i + 4);
-					//	System.out.println("af " + resultChain);
+						// System.out.println("af " + resultChain);
 						count++;
 					} else
 						break b4;
@@ -99,7 +108,8 @@ public class Chain {
 		b4: for (int ñ = 0; ñ < 17; ñ++) {
 			if (resultChain.length() > 2) {
 				for (int i = 0; i < resultChain.length() - 2; i++) {
-					if ((resultChain.charAt(i) == resultChain.charAt(i + 1)) & (resultChain.charAt(i) == resultChain.charAt(i + 2))) {
+					if ((resultChain.charAt(i) == resultChain.charAt(i + 1))
+							& (resultChain.charAt(i) == resultChain.charAt(i + 2))) {
 
 						String buf = "";
 						for (int j = 0; j < 6; j++) {
@@ -116,9 +126,9 @@ public class Chain {
 								break;
 							}
 						}
-					//	 System.out.println("bf " + resultChain);
+						// System.out.println("bf " + resultChain);
 						resultChain = resultChain.substring(0, i) + buf + resultChain.substring(i + 3);
-					//	 System.out.println("af " + resultChain);
+						// System.out.println("af " + resultChain);
 					} else
 						break b4;
 				}
@@ -129,9 +139,9 @@ public class Chain {
 			if (resultChain.length() > 1) {
 				for (int i = 0; (i < resultChain.length() - 1); i++) {
 					if (moInvers(resultChain.substring(i + 1, i + 2)).equals(resultChain.substring(i, i + 1))) {
-						//System.out.println("bf " + resultChain);
+						// System.out.println("bf " + resultChain);
 						resultChain = resultChain.substring(0, i + 1) + resultChain.substring(i + 2);
-						//System.out.println("af " + resultChain);
+						// System.out.println("af " + resultChain);
 						count++;
 
 					} else

@@ -17,17 +17,18 @@ public class Calc {
 		//r.nextInt(13);
 		//System.out.println(" ");
 		
-		
-		Chain zero = new Chain(6);
+		Thread th = Thread.currentThread();
+		th.setPriority(9);
+		Chain zero = new Chain(7);
 		
 		
 		
 		System.out.println("");
-		System.out.println(Chain.total);
+		//System.out.println(Chain.total);
 		System.out.println(Chain.count);
-		double i=(Chain.total.intValue()-Chain.count);
-		i=i*100/Chain.total.intValue();
-		System.out.println(i);
+	//	double i=(Chain.total.intValue()-Chain.count);
+	//	i=i*100/Chain.total.intValue();
+	//	System.out.println(i);
 		System.out.println("end");
 	}
 }
