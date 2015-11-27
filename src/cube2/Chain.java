@@ -10,8 +10,8 @@ public class Chain {
 	public Chain ch[] = new Chain[13];
 	public String kill = "0";
 	public static String mo[] = { "U", "F", "R", "B", "L", "D", "u", "f", "r", "b", "l", "d" };
-	// public static BigInteger total = new BigInteger("0");
-	// public static BigInteger odin = new BigInteger("1");
+	 public static BigInteger total = new BigInteger("0");
+	 public static BigInteger odin = new BigInteger("1");
 	public static int tot = 0;
 	public static int count = 0;
 	public String resultChain;
@@ -34,13 +34,13 @@ public class Chain {
 			// System.out.println(resultChain);
 			check();
 			if (tot >= 100000) {
-				System.out.println(tot);
+				System.out.println(total);
 				tot = 0;
 			}
 			// System.out.println(resultChain);
 			// check();
 			// System.out.println(resultChain);
-			// total = total.add(odin);
+			 total = total.add(odin);
 			tot++;
 			if (resultChain.length() < 4)
 				kill = "1";
