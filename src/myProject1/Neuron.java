@@ -3,7 +3,7 @@ package myProject1;
 public class Neuron {
 	double weight = 1;
 	double input;
-	double value;
+	double output=0;
 	double error = 0;
 
 	public Neuron() {
@@ -12,8 +12,9 @@ public class Neuron {
 	}
 
 	public void initInput(double d) {
+		System.out.println("error"); ///WRONG!!!
 		input = 0;
-		value = d;
+		output = d;
 	}
 
 	public void initWeidht() {
@@ -24,27 +25,27 @@ public class Neuron {
 	public void calcValue(Neuron n[]) { //WRONG!!!
 		input = 0;
 		for (Neuron n1 : n)
-			input += n1.value;
-		value = input * weight;
-		if (value > 0.5)
-			value = 1;
+			input += n1.output;
+		output = input * weight;
+		if (output > 0.5)
+			output = 1;
 		else
-			value = 0;
+			output = 0;
 	}
 
 	public void calcWeight(Neuron n[]) {
 		error = 0;
 		for (Neuron n1 : n)
 			error+= n1.error;
-		value = input * weight;
-		if (value > 0.5)
-			value = 1;
+		output = input * weight;
+		if (output > 0.5)
+			output = 1;
 		else
-			value = 0;
+			output = 0;
 	}
 
 	public void coutValue() {
-		System.out.println(value);
+		System.out.println(output);
 	}
 
 }
