@@ -19,7 +19,7 @@ public class Network {
 		}
 		in[0].input = 0;
 		in[1].input = 0;
-		hid[0].value = 0;
+	//	hid[0].value = 0;
 
 	}
 
@@ -53,7 +53,7 @@ public class Network {
 					err=0;
 				
 				for (int j=0; j<out.length;j++) {
-					out[j].error=ans[i][j]-out[j].value;
+				//	out[j].error=ans[i][j]-out[j].value;
 				}
 				
 				
