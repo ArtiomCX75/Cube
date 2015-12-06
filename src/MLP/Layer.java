@@ -1,22 +1,21 @@
 package MLP;
 
 public class Layer {
-	public Neutron neutron[];
+	public Neuron neutron[];
 	int lenght;
-
 
 	public Layer(int len) {
 		System.out.println("Create layer with " + len + " neutrons");
 		lenght = len;
-		neutron = new Neutron[len];
+		neutron = new Neuron[len];
 		for (int i = 0; i < neutron.length; i++) {
-			neutron[i] = new Neutron();
+			neutron[i] = new Neuron();
 			neutron[i].setValue(0);
 		}
 	}
 
 	public void makeRound() {
-		for (Neutron n : neutron)
+		for (Neuron n : neutron)
 			n.makeRound();
 	}
 
@@ -42,7 +41,7 @@ public class Layer {
 
 	public void setLayerErrNull() {
 		for (int i = 0; i < neutron.length; i++) {
-			neutron[i].nErr=0;
+			neutron[i].nErr = 0;
 		}
 	}
 
@@ -52,10 +51,26 @@ public class Layer {
 		}
 	}
 
+	public void roundLayerPro() {
+		for (int i = 0; i < neutron.length; i++) {
+			neutron[i].makeRoundPro();
+		}
+	}
+
 	public void calcError(double solution) {
 		setLayerErrNull();
 		for (int i = 0; i < neutron.length; i++) {
 			neutron[i].nErr = solution - neutron[i].getValue();
 		}
 	}
+
+	public void calcError(Weight w) {
+		setLayerErrNull();
+		for (int i = 0; i < w.weight.length; i++) {
+			for (int j = 0; j < w.weight[0].length; j++) {
+				neutron[i].nErr = neutron[i].nErr + w.weight[i][j].getValue();
+			}
+		}
+	}
+
 }
